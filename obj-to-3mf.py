@@ -111,10 +111,10 @@ Shape {
 
 def main():
 	p=ArgumentParser()
-	p.add_argument("-i", "--input", nargs=1)
-	p.add_argument("-f", "--format", nargs=1, default="auto", help="one of: auto 3mf amf vrml")
-	p.add_argument("-o", "--output", nargs=1, default="/dev/null")
-	p.add_argument("-r", "--reverse-winding", default=False, action="store_true", help="reverse vertex winding")
+	p.add_argument("-i", "--input", nargs=1, help='Wavefront .obj filename (file in ASCII format, not binary)')
+	p.add_argument("-f", "--format", nargs=1, default="auto", help="One of: auto 3mf amf vrml. Default auto")
+	p.add_argument("-o", "--output", nargs=1, default="/dev/null", help="Output filename. If format is \"auto\" then suffix [.3mf/.amf/.vrml] determines format")
+	p.add_argument("-r", "--reverse-winding", default=False, action="store_true", help="Reverse vertex winding")
 	args=p.parse_args()
 	me=Mesh()
 	with open(args.input[0]) as f:
